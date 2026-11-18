@@ -37,7 +37,7 @@ def classifier(img_path, model_name):
     img_tensor.requires_grad_(False)
 
     # apply model to input
-    model = models[model_name]
+    model = models[model_name] # type: ignore
 
     # puts model in evaluation mode
     # instead of training mode (the default)
