@@ -22,8 +22,6 @@ for image in images:
     classifier_label = classifier(image.filename, "alexnet")
     image.set_classifier_label(classifier_label)
 
-
-for image in images:
     if image.is_correctly_classified:
         correct_total += 1
     else:
