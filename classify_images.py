@@ -1,10 +1,13 @@
 from classifier import classifier
 import os
+from utils import *
 from image import Image
+
 correct_total = 0
 incorrect_total = 0
 
 images = []
+labels = get_labels("dognames.txt")
 
 input = input("Enter the path to the image file (or press Enter to use default images): ")
 path = "pet_images/" if input == "" else input
@@ -14,13 +17,9 @@ for filename in os.listdir(path):
 
 print("Number of images found:", len(images))
 
-#for i in range(10):
-#    image = images[i]
-#    print(image)
-
 for image in images:
-    classifier_label = classifier(image.filename, "alexnet")
-    image.set_classifier_label(classifier_label)
+    image.set_classifier_label(classifier(image.filename, "alexnet"))
+    image.is_classifier_label_dog(labels)
 
     if image.is_correctly_classified:
         correct_total += 1
